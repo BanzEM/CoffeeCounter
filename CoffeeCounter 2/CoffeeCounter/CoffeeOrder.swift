@@ -19,7 +19,7 @@ let menu = [
 struct CoffeeOrder {
     var customerName: String
     var items: [(item: MenuItem, quantity: Int)] = []
-    let taxRate: Int = 0.08
+    let taxRate: Int = Int(0.08)
     var tipPercent = 15
     var discountCode: String?
 
