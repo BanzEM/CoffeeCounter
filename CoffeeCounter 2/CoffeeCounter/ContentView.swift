@@ -6,7 +6,7 @@ struct ContentView: View {
     @State private var quantityText = "1"
     @State private var discountText = ""
     @State private var orderNumber = 0
-    @State private var loyaltyPoints: UInt8 = 0
+    @State private var loyaltyPoints = 0
     @State private var statusMessage = ""
 
     let tipOptions = [10, 15, 20]
@@ -34,7 +34,7 @@ struct ContentView: View {
                 }
 
                 Section("Your order") {
-                    ForEach(0...order.items.count, id: \.self) { index in
+                    ForEach(0..<order.items.count, id: \.self) { index in
                         HStack {
                             Text(lineText(order.items[index]))
                             Spacer()
@@ -90,7 +90,8 @@ struct ContentView: View {
     // MARK: - Labels
 
     var greeting: String {
-        var message: String
+        var message: String = "Hi customer"
+        
         if !order.customerName.isEmpty {
             message = "Hi, \(order.customerName)!"
         }
@@ -135,11 +136,69 @@ struct ContentView: View {
         order.add(selectedItem, quantity: quantity)
         quantityText = `default`
     }
+    
+    private func isMax(_ order: CoffeeOrder) -> Bool {
+        
+        guard !order.items.isEmpty else {
+            return false
+        }
+        
+        var orderedItems = order.items
+        var maxPerOrder = false
+        
+        orderedItems.forEach{ orderedItem in
+            
+            menu.forEach{ menuItem in
+                
+                if orderedItem.item.name == menuItem.name {
+                    if orderedItem.quantity > menuItem.maxPerOrder {
+                       maxPerOrder = true
+                    }
+                }
+                
+            }
+            
+        }
+        return maxPerOrder
+        
+    }
+    
+    
+    
+    func validate(_ order: CoffeeOrder) -> Bool {
+        
+        //var isValidOrder = true
+        
+        if order.customerName.isEmpty {
+            
+            statusMessage = " The customer name is empty "
+            //isValidOrder = false
+            return false
+            
+        } else if order.items.isEmpty {
+            
+            statusMessage = " The cart is empty "
+            //isValidOrder = false
+            return false
+            
+        } else if isMax(order) {
+            
+            statusMessage = " You have reached the number of allowed items "
+            //isValidOrder = false
+            return false
+        }
+        
+        //return isValidOrder
+        return true
+    }
 
     func placeOrder() {
-        let statusMessage = ""
+        //let statusMessage = ""
 
-        validate(order)
+        guard validate(order) else {
+            return
+        }
+        
 
         orderNumber += 1
         loyaltyPoints += 50
