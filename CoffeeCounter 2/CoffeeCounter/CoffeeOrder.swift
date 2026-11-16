@@ -40,7 +40,7 @@ struct CoffeeOrder {
         for entry in items {
             total += Int(entry.item.price) * entry.quantity
         }
-        return total
+        return Double(total)
     }
 
     var tax: Dollars {
