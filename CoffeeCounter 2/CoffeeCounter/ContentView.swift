@@ -151,7 +151,7 @@ struct ContentView: View {
             statusMessage = "Order #\(orderNumber) placed. Total: \(order.total)"
         }
 
-        if order.discount {
+        if order.discount != 0 {
             statusMessage += " You saved \(order.discount)."
         }
 
