@@ -141,7 +141,7 @@ struct ContentView: View {
 
         validate(order)
 
-        orderNumber ++
+        orderNumber += 1
         loyaltyPoints += 50
 
         // Every 5th order is free
