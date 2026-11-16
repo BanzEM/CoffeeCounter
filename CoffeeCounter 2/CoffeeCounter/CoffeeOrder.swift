@@ -38,7 +38,7 @@ struct CoffeeOrder {
     var subtotal: Dollars {
         var total = 0
         for entry in items {
-            total += entry.item.price * entry.quantity
+            total += Int(entry.item.price) * entry.quantity
         }
         return total
     }
