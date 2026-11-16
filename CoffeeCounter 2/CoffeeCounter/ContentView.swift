@@ -131,7 +131,7 @@ struct ContentView: View {
 
     func addSelectedItem() {
         let `default` = "1"
-        let quantity: Int = Int(quantityText)
+        let quantity: Int = Int(quantityText)!
         order.add(selectedItem, quantity: quantity)
         quantityText = `default`
     }
@@ -141,7 +141,7 @@ struct ContentView: View {
 
         validate(order)
 
-        orderNumber++
+        orderNumber ++
         loyaltyPoints += 50
 
         // Every 5th order is free
