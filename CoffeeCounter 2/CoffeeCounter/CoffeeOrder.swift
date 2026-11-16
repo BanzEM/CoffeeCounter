@@ -20,7 +20,7 @@ struct CoffeeOrder {
     var customerName: String
     var items: [(item: MenuItem, quantity: Int)] = []
     let taxRate: Int = Int(0.08)
-    var tipPercent = 15
+    var tipPercent = Double(15)
     var discountCode: String?
 
     mutating func add(_ item: MenuItem, quantity: Int) {
@@ -44,7 +44,7 @@ struct CoffeeOrder {
     }
 
     var tax: Dollars {
-        subtotal * taxRate
+       subtotal * Double(taxRate)
     }
 
     var tip: Dollars {
