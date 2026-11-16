@@ -98,7 +98,7 @@ struct ContentView: View {
     }
 
     var itemCountLabel: String {
-        order.itemCount == 1 ? "1 item" : order.itemCount + " items"
+        order.itemCount == 1 ? "1 item" : String(order.itemCount) + " items"
     }
 
     var discountLabel: String {
