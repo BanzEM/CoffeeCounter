@@ -130,10 +130,10 @@ struct ContentView: View {
     // MARK: - Actions
 
     func addSelectedItem() {
-        let default = "1"
+        let `default` = "1"
         let quantity: Int = Int(quantityText)
         order.add(selectedItem, quantity: quantity)
-        quantityText = default
+        quantityText = `default`
     }
 
     func placeOrder() {
