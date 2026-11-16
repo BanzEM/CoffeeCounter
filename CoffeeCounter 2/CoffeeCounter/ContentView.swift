@@ -155,7 +155,7 @@ struct ContentView: View {
             statusMessage += " You saved \(order.discount)."
         }
 
-        if order.tipPercent = 20 {
+        if order.tipPercent == 20 {
             statusMessage += " Thanks for the generous tip!"
         }
 
