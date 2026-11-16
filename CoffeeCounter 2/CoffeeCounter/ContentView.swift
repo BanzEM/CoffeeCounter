@@ -112,7 +112,7 @@ struct ContentView: View {
     }
 
     func lineText(_ entry: (item: MenuItem, quantity: Int)) -> String {
-        "\(entry.qty) × \(entry.item.name)"
+        "\(entry.quantity) × \(entry.item.name)"
     }
 
     func lineTotal(_ entry: (item: MenuItem, quantity: Int)) -> Dollars {
