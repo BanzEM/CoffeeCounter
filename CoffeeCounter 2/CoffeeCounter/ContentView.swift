@@ -105,7 +105,10 @@ struct ContentView: View {
         if order.discountCode == nil {
             return "No code applied"
         }
-        return "Code applied: " + order.discountCode
+        
+        let unwrappedDiscount = order.discountCode ?? ""
+        
+        return "Code applied: " + unwrappedDiscount
     }
 
     func lineText(_ entry: (item: MenuItem, quantity: Int)) -> String {
